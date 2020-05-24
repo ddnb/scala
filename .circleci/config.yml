@@ -19,6 +19,12 @@ jobs:
                     apt-get install -y sbt python-pip git
                     pip install awscli
                     apt-get clean && apt-get autoclean
+      - run:
+          name: Configure awscli
+          command: |
+                    aws configure set aws_access_key_id $AWS_ACCESS_KEY
+                    aws configure set aws_secret_access_key $AWS_SECRET_KEY
+                    aws configure set region ap-northeast-1
       - checkout
       - restore_cache:
           key: sbt-cache
