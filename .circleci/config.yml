@@ -36,6 +36,7 @@ jobs:
           destination: scala
       - save_cache:
           key: sbt-cache
+          # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
           paths:
             - "~/.ivy2/cache"
             - "~/.sbt"
@@ -44,3 +45,18 @@ jobs:
           command: |
               mv target/universal/scala.zip $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD
               aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scala.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
+
+  # Run tests
+  test:
+    working_directory: ~/scala
+    docker:
+      - image: openjdk:8
+        environment:
+          - TEST=test
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          key: sbt-cache
+          # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
+      - run: sbt test
