@@ -68,35 +68,44 @@ jobs:
       - run: sbt test
 
 # Deploy
-deploy:
-  working_directory: ~/scala
-  docker:
-    - image: openjdk:8
-      environment:
-        - TEST: test
-  steps:
-    - run:
-        name: Get sbt binary
-        command: |
-                apt-get update
-                apt-get install -y sbt python-pip git
-                pip install awscli
-                apt-get clean && apt-get autoclean
-    - run:
-      name: Configure awscli
-      command: |
-                aws configure set aws_access_key_id $AWS_ACCESS_KEY
-                aws configure set aws_secret_access_key $AWS_SECRET_KEY
-                aws configure set region ap-northeast-1
-    - attach_workspace:
-        at: .
-    - restore_cache:
-        key: sbt-cache
-        # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
-    - deploy:
-      command: |
-          mv target/universal/scala.zip $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD
-          aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scala.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
+  deploy:
+    working_directory: ~/scala
+    docker:
+      - image: openjdk:8
+        environment:
+          - SBT_VERSION: 1.2.7
+          - TEST: test
+    steps:
+      - run: echo 'export ARTIFACT_BUILD=$CIRCLE_PROJECT_REPONAME-$CIRCLE_BUILD_NUM.zip' >> $BASH_ENV
+      - run: 
+          name: Get sbt binary
+          command: |
+                apt update && apt install -y curl
+                curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb
+                dpkg -i sbt-$SBT_VERSION.deb
+                rm sbt-$SBT_VERSION.deb
+      - run:
+          name: Get aws
+          command: |
+                  apt-get update
+                  apt-get install -y sbt python-pip git
+                  pip install awscli
+                  apt-get clean && apt-get autoclean
+      - run:
+          name: Configure awscli
+          command: |
+                  aws configure set aws_access_key_id $AWS_ACCESS_KEY
+                  aws configure set aws_secret_access_key $AWS_SECRET_KEY
+                  aws configure set region ap-northeast-1
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          key: sbt-cache
+          # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
+      - deploy:
+          command: |
+                  mv target/universal/scala.zip $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD
+                  aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scala.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
 
 workflows:
   version: 2
