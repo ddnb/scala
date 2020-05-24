@@ -34,6 +34,10 @@ jobs:
       - store_artifacts:
           path: target/universal/scala.zip
           destination: scala
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./
       - save_cache:
           key: sbt-cache
           # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
@@ -41,10 +45,6 @@ jobs:
             - "~/.ivy2/cache"
             - "~/.sbt"
             - "~/.m2"
-      - deploy:
-          command: |
-              mv target/universal/scala.zip $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD
-              aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scala.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
 
   # Run tests
   test:
@@ -56,11 +56,32 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - run:
+          name: Verify
+          command: |
+                    pwd;ls;whoami;
       - restore_cache:
           key: sbt-cache
           # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
       - run: sbt test
 
+# Deploy
+deploy:
+  working_directory: ~/scala
+  docker:
+    - image: openjdk:8
+      environment:
+        - TEST=test
+  steps:
+    - attach_workspace:
+        at: .
+    - restore_cache:
+        key: sbt-cache
+        # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
+    - deploy:
+      command: |
+          mv target/universal/scala.zip $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD
+          aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scala.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
 
 workflows:
   version: 2
@@ -70,3 +91,6 @@ workflows:
       - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test
