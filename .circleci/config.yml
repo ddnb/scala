@@ -37,4 +37,4 @@ jobs:
       - deploy:
           command: |
               mv target/universal/scala.zip $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD
-              aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scals.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
+              aws s3 cp $CIRCLE_ARTIFACTS/$ARTIFACT_BUILD s3://scala.ddnb.info/builds/scala/ --metadata {\"git_sha1\":\"$CIRCLE_SHA1\"}
