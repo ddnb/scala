@@ -60,3 +60,13 @@ jobs:
           key: sbt-cache
           # key: scala-dependencies-{{ checksum "build.sbt" }}-{{ checksum "package.json" }}
       - run: sbt test
+
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
