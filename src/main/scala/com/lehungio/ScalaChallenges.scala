@@ -12,5 +12,5 @@ package com.lehungio
 
 object ScalaChallenges {
   def hello() = "Hello, World!"
-  def greet(name: String): String = s"Hello, $name!"
+  def greeting(name: String): String = s"Hello, $name!"
 }

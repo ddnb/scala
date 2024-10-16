@@ -12,8 +12,8 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 class ScalaChallengesSpecTest extends AnyFlatSpec {
 
-  "greet" should "return a greeting message with the given name" in {
-    assert(ScalaChallenges.greet("World") == "Hello, World!")
+  "Greeting" should "return a greeting message with the given name" in {
+    assert(ScalaChallenges.greeting("World") == "Hello, World!")
   }
 
 }

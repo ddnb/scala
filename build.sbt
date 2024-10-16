@@ -17,7 +17,7 @@
 
 ThisBuild / organization := "com.lehungio"
 ThisBuild / version := "0.1.0"
-ThisBuild / scalaVersion := "2.13.12"
+ThisBuild / scalaVersion := "3.3.3"
 
 // GitHub Packages repository
 publishTo := Some("GitHub Packages" at "https://maven.pkg.github.com/lehungio/scala")
