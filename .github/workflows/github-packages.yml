@@ -33,6 +33,6 @@ jobs:
 
       - name: Build and publish
         env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGES }}
           GITHUB_USERNAME: ${{ secrets.USERNAME }}
+          PUBLISH_GITHUB_PACKAGES: ${{ secrets.PUBLISH_GITHUB_PACKAGES }}
         run: sbt publish
