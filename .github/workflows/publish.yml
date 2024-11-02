@@ -1,0 +1,41 @@
+name: Publish Scala Package
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Use the appropriate Java version for your Scala setup
+          
+      - name: Cache Ivy2
+        uses: actions/cache@v2
+        with:
+          path: ~/.ivy2/cache
+          key: ${{ runner.os }}-ivy2-${{ hashFiles('**/*.sbt', '**/*.scala') }}
+          restore-keys: |
+            ${{ runner.os }}-ivy2-
+
+      - name: Cache SBT
+        uses: actions/cache@v2
+        with:
+          path: ~/.sbt
+          key: ${{ runner.os }}-sbt-${{ hashFiles('**/*.sbt', '**/*.scala') }}
+          restore-keys: |
+            ${{ runner.os }}-sbt-
+
+      - name: Build and publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        run: sbt publish
