@@ -1,4 +1,4 @@
-package com.lehungio
+package com.lehungio.classes
 
 // Define the HelloWorld class inheriting from Challenges
 class HelloWorld extends Challenges("HelloWorld") {

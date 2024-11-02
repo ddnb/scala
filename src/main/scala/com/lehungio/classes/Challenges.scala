@@ -1,4 +1,4 @@
-package com.lehungio
+package com.lehungio.classes
 
 // Define the base Challenges class with a constructor
 abstract class Challenges(challengeName: String) {

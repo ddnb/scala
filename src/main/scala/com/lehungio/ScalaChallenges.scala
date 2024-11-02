@@ -1,5 +1,7 @@
 package com.lehungio
 
+import com.lehungio.classes.HelloWorld
+
 object ScalaChallenges {
   def main(args: Array[String]): Unit = {
     // Creating an instance of HelloWorld will output the challenge name

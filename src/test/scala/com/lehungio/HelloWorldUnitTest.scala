@@ -1,5 +1,6 @@
 package com.lehungio
 
+import com.lehungio.classes.HelloWorld
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 

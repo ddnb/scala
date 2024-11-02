@@ -1,4 +1,4 @@
-package com.lehungio
+package com.lehungio.classes
 
 class TwoFer {
 

@@ -1,13 +1,6 @@
-// package example
-
-// class HelloSpec extends munit.FunSuite {
-//   test("say hello") {
-//     assertEquals(Hello.greeting, "hello")
-//   }
-// }
-
 package com.lehungio
 
+import com.lehungio.classes.HelloWorld
 import org.scalatest.flatspec.AnyFlatSpec
 
 class HelloWorldSpecTest extends AnyFlatSpec {
