@@ -2,8 +2,7 @@ name: Publish Scala Package
 
 on:
   push:
-    branches:
-      - main  # or your default branch
+    branches: [ "publish", "main" ]
 
 jobs:
   build:
@@ -16,8 +15,9 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # Use the appropriate Java version for your Scala setup
-          
+          java-version: '21'  # Updated to use Java 21
+          distribution: 'adopt'  # You can also use 'zulu', 'temurin', etc.
+
       - name: Cache Ivy2
         uses: actions/cache@v2
         with:
