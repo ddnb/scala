@@ -28,7 +28,7 @@ credentials += Credentials(
   "GitHub Package Registry",
   "maven.pkg.github.com",
   sys.env.getOrElse("GITHUB_USERNAME", "lehungio"),
-  sys.env.getOrElse("PUBLISH_GITHUB_PACKAGES", "")
+  sys.env.getOrElse("PUBLISH_GITHUB_PACKAGES", "") // https://docs.github.com/en/packages/learn-github-packages/publishing-a-package
 )
 
 resolvers += "GitHub Package Registry" at "https://maven.pkg.github.com/lehungio/scala"
