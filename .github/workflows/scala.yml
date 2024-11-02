@@ -7,7 +7,7 @@ name: Scala CI
 
 on:
   push:
-    branches: [ "main", "challenge*" ]
+    branches: [ "challenge*" ]
   pull_request:
     branches: [ "main" ]
 
