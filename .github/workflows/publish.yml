@@ -2,10 +2,12 @@ name: Publish Scala Package
 
 on:
   push:
-    branches: [ "publish", "main" ]
+    branches: [ "publish" ]
+  release:
+    types: [created]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
