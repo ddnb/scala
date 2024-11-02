@@ -7,7 +7,7 @@ on:
     types: [created]
 
 jobs:
-  publish:
+  github-packages:
     runs-on: ubuntu-latest
 
     steps:
