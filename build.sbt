@@ -1,6 +1,6 @@
 // General project settings
 ThisBuild / organization := "com.lehungio"
-ThisBuild / version := "2.0.0-snapshots.2"
+ThisBuild / version := "2.0.0"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / versionScheme := Some("early-semver")
 
