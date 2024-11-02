@@ -33,6 +33,23 @@ For the other planets, you have to account for their orbital period in Earth yea
 
 - The actual length of one complete orbit of the Earth around the sun is closer to 365.256 days (1 sidereal year). The Gregorian calendar has, on average, 365.2425 days. While not entirely accurate, 365.25 is the value used in this exercise. For more information, see [Year on Wikipedia](https://en.wikipedia.org/wiki/Year).
 
+### Directory Structure
+project_folder/
+└── src/
+    ├── main/
+    │   └── scala/
+    │       └── com/
+    │           └── lehungio/
+    │               └── classes/
+    │                   └── SpaceAge.scala
+    │               └── objects/
+    │                   └── SpaceAge.scala
+    └── test/
+        └── scala/
+            └── com/
+                └── lehungio/
+                    └── SpaceAgeUnitTest.scala
+
 ## Reference
 
 For additional context and details about this challenge, please visit [Year on Wikipedia](https://en.wikipedia.org/wiki/Year).
