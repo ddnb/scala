@@ -1,11 +1,11 @@
 // General project settings
 ThisBuild / organization := "com.lehungio"
-ThisBuild / version := "2.0.0-rc"
+ThisBuild / version := "2.0.0-snapshots1"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / versionScheme := Some("early-semver")
 
 // Define project name
-name := "ScalaChallenges"
+name := "Scala"
 
 // GitHub Packages repository for publishing
 publishTo := {
@@ -21,7 +21,7 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.16" % Test
 
 // GihuHub Publish Packages dependency
 // https://github.com/lehungio/scala/packages/2301314
-// libraryDependencies += "com.lehungio" %% "scalachallenges" % "1.0.0"
+// libraryDependencies += "com.lehungio" %% "scala" % "1.0.0"
 
 // Credentials for GitHub Packages (from environment variables)
 credentials += Credentials(
