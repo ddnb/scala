@@ -13,5 +13,7 @@ object Challenges {
 
     // Challenge: Hamming Distance
     println(s"Check SCALA and ALACS: ${HammingDistance.calculate("SCALA", "ALACS")}") // Output: Some(4)
+
+    // Challenge: Word Quest
   }
 }

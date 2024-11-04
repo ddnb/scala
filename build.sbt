@@ -1,6 +1,6 @@
 // General project settings
 ThisBuild / organization := "com.lehungio"
-ThisBuild / version := "3.1.0-snapshots.1"
+ThisBuild / version := "3.2.0-snapshots.1"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / versionScheme := Some("early-semver")
 
@@ -21,7 +21,7 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.16" % Test
 
 // GihuHub Publish Packages dependency
 // https://github.com/ddnb/scala/packages/2301314
-// libraryDependencies += "com.lehungio" %% "scala" % "3.0.1"
+// libraryDependencies += "com.lehungio" %% "scala" % "3.1.0"
 
 // Credentials for GitHub Packages (from environment variables)
 // https://github.com/settings/tokens
