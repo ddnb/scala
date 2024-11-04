@@ -1,4 +1,4 @@
-name: Maven Package
+name: Publish Maven Package
 
 on:
   push:
@@ -34,5 +34,5 @@ jobs:
       - name: Build and publish
         env:
           PUBLISHER_GITHUB_USERNAME: ${{ secrets.PUBLISHER_GITHUB_USERNAME }}
-          PUBLISH_GITHUB_PACKAGES: ${{ secrets.PUBLISHER_GITHUB_TOKEN }}
+          PUBLISHER_GITHUB_TOKEN: ${{ secrets.PUBLISHER_GITHUB_TOKEN }}
         run: sbt publish
