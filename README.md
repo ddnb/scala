@@ -68,4 +68,4 @@ If you have any questions or feedback, please get in touch!
 
 - **Email**: me@lehungio.com
 - **GitHub**: [@lehungio](https://github.com/lehungio)
-- **Challenge Me**: [Submit a new challenge](https://github.com/lehungio/scala-challenges/issues/new?assignees=&labels=new&projects=&template=DEFAULT.md&title=Programming+Challenge%3A+%5BChallenge+Name%5D%5BNamespace%5D)
+- **Challenge Me**: [Submit a new challenge](https://github.com/ddnb/scala-challenges/issues/new?assignees=&labels=new&projects=&template=DEFAULT.md&title=Programming+Challenge%3A+%5BChallenge+Name%5D%5BNamespace%5D)
