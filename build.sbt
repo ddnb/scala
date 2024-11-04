@@ -1,6 +1,6 @@
 // General project settings
 ThisBuild / organization := "com.lehungio"
-ThisBuild / version := "3.0.0"
+ThisBuild / version := "3.0.1"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / versionScheme := Some("early-semver")
 
@@ -24,6 +24,8 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.16" % Test
 // libraryDependencies += "com.lehungio" %% "scala" % "2.0.0"
 
 // Credentials for GitHub Packages (from environment variables)
+// https://github.com/settings/tokens
+// export PUBLISHER_GITHUB_TOKEN=ghp_...
 credentials += Credentials(
   "GitHub Package Registry",
   "maven.pkg.github.com",
